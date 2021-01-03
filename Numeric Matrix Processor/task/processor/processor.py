@@ -28,6 +28,12 @@ def sum_matrices(matrix_a, matrix_b):
     return matrix_a
 
 
+def multiply_matrix(matrix, multiplier):
+    for row in matrix:
+        for index, element in enumerate(row):
+            row[index] = element * multiplier
+
+
 def read_matrix(matrix, size):
     rows = size[0]
     # cols = size[1]
@@ -36,15 +42,27 @@ def read_matrix(matrix, size):
         matrix.append(new_row)
 
 
-matrix_size_1 = [int(x) for x in input().split(' ')]
-matrix_1 = []
-read_matrix(matrix_1, matrix_size_1)
-matrix_size_2 = [int(x) for x in input().split(' ')]
-matrix_2 = []
-read_matrix(matrix_2, matrix_size_2)
+# region Stage 1
+# matrix_size_1 = [int(x) for x in input().split(' ')]
+# matrix_1 = []
+# read_matrix(matrix_1, matrix_size_1)
+# matrix_size_2 = [int(x) for x in input().split(' ')]
+# matrix_2 = []
+# read_matrix(matrix_2, matrix_size_2)
+#
+# if is_equal_dimensions(matrix_1, matrix_2):
+#     new_matrix = sum_matrices(matrix_1, matrix_2)
+#     print_matrix(new_matrix)
+# else:
+#     print("ERROR")
+# endregion
 
-if is_equal_dimensions(matrix_1, matrix_2):
-    new_matrix = sum_matrices(matrix_1, matrix_2)
-    print_matrix(new_matrix)
-else:
-    print("ERROR")
+# region Stage 2
+matrix_size = [int(x) for x in input().split(' ')]
+some_matrix = []
+read_matrix(some_matrix, matrix_size)
+multiplier_ = int(input())
+multiply_matrix(some_matrix, multiplier_)
+print_matrix(some_matrix)
+
+# endregion

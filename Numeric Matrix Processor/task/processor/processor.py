@@ -151,21 +151,23 @@ class Matrix:
             row_index += 1
         return new_matrix
 
-    def transpose_choice(self):
+    @staticmethod
+    def transpose_choice():
         print("\n1. Main diagonal")
         print("2. Side diagonal")
         print("3. Vertical line")
         print("4. Horizontal line")
 
         user_input = int(input("Your choice: "))
-        self.transpose_matrix(user_input)
+        Matrix.transpose_matrix(user_input)
 
-    def transpose_matrix(self, a_transpose_dir):
+    @staticmethod
+    def transpose_matrix(a_transpose_dir):
         print("Enter matrix size: ", end="")
-        dimensions = self.get_dimensions()
+        dimensions = Matrix.get_dimensions()
         print("Enter matrix: ")
         matrix = []
-        self.read_matrix(matrix, dimensions)
+        Matrix.read_matrix(matrix, dimensions)
 
         if a_transpose_dir == Transposition.MAIN_DIAGONAL:
             matrix = list(zip(*matrix))

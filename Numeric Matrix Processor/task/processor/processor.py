@@ -5,7 +5,15 @@ class Menu(IntEnum):
     EXIT = 0,
     ADD_MATRICES = 1,
     MULTIPLY_MATRIX_CONSTANT = 2,
-    MULTIPLY_MATRICES = 3
+    MULTIPLY_MATRICES = 3,
+    TRANSPOSE_MATRIX = 4
+
+
+class Transposition(IntEnum):
+    MAIN_DIAGONAL = 1,
+    SIDE_DIAGONAL = 2,
+    VERTICAL_LINE = 3,
+    HORIZONTAL_LINE = 4
 
 
 class Matrix:
@@ -26,6 +34,7 @@ class Matrix:
         print("1. Add matrices")
         print("2. Multiply matrix by a constant")
         print("3. Multiply matrices")
+        print("4. Transpose matrix")
         print("0. Exit")
 
     @staticmethod
@@ -142,6 +151,39 @@ class Matrix:
             row_index += 1
         return new_matrix
 
+    def transpose_choice(self):
+        print("\n1. Main diagonal")
+        print("2. Side diagonal")
+        print("3. Vertical line")
+        print("4. Horizontal line")
+
+        user_input = int(input("Your choice: "))
+        self.transpose_matrix(user_input)
+
+    def transpose_matrix(self, a_transpose_dir):
+        print("Enter matrix size: ", end="")
+        dimensions = self.get_dimensions()
+        print("Enter matrix: ")
+        matrix = []
+        self.read_matrix(matrix, dimensions)
+
+        if a_transpose_dir == Transposition.MAIN_DIAGONAL:
+            matrix = list(zip(*matrix))
+        elif a_transpose_dir == Transposition.SIDE_DIAGONAL:
+            matrix.reverse()
+            for row in matrix:
+                row.reverse()
+            matrix = list(zip(*matrix))
+        elif a_transpose_dir == Transposition.VERTICAL_LINE:
+            for row in matrix:
+                row.reverse()
+        elif a_transpose_dir == Transposition.HORIZONTAL_LINE:
+            matrix.reverse()
+
+        print("The result is:")
+        Matrix.print_matrix(matrix)
+        print()
+
 
 def run():
     app = Matrix()
@@ -163,6 +205,8 @@ def run():
             elif user_input == Menu.MULTIPLY_MATRICES:
                 app.reset()
                 app.multiply_matrices()
+            elif user_input == Menu.TRANSPOSE_MATRIX:
+                app.transpose_choice()
             else:
                 print("Invalid input!")
 

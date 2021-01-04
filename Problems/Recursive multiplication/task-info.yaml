@@ -1,0 +1,18 @@
+type: code
+files:
+- name: main.py
+  visible: true
+  text: |-
+    def multiply(a, b):
+
+        if ...:  # base case
+            return a
+        # recursive case
+        return  ...
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/7669#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: Mon, 04 Jan 2021 06:37:44 UTC
+record: -1
